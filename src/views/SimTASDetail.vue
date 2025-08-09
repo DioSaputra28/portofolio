@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
+import { onMounted } from 'vue'
+import { useSEO } from '../composables/useSEO'
 
 const router = useRouter()
+const { updateSEO, addStructuredData } = useSEO()
 
 const goBack = () => {
   router.push('/#projects')
@@ -10,6 +13,34 @@ const goBack = () => {
 const openSourceCode = () => {
   window.open('https://github.com/DioSaputra28/ProjectTAS', '_blank')
 }
+
+onMounted(() => {
+  // Update SEO for this page
+  updateSEO({
+    title: 'SimTAS - Sistem Manajemen Administratif Sekolah | Dio Saputra',
+    description: 'SimTAS adalah website manajemen data karyawan sekolah dengan sistem penugasan dan konfirmasi berbasis waktu. Dikembangkan menggunakan Laravel dan Tailwind CSS untuk efisiensi administrasi sekolah.',
+    keywords: 'SimTAS, Sistem Manajemen Sekolah, Laravel, Tailwind CSS, Manajemen Karyawan, Administrasi Sekolah, Dio Saputra, Portfolio',
+    ogType: 'article',
+    canonicalUrl: 'https://diosaputra.dev/project/simtas'
+  })
+  
+  // Add structured data for the project
+  addStructuredData({
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "SimTAS",
+    "description": "Sistem Manajemen Administratif Sekolah untuk mengelola data karyawan dengan sistem penugasan dan konfirmasi berbasis waktu",
+    "applicationCategory": "WebApplication",
+    "operatingSystem": "Web",
+    "programmingLanguage": ["PHP", "JavaScript"],
+    "author": {
+      "@type": "Person",
+      "name": "Dio Saputra"
+    },
+    "dateCreated": "2024-01-01",
+    "codeRepository": "https://github.com/DioSaputra28/ProjectTAS"
+  })
+})
 </script>
 
 <template>

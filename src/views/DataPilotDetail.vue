@@ -1,8 +1,11 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
+import { onMounted } from 'vue'
 import dataPilotImage from '../assets/datapilot.png'
+import { useSEO } from '../composables/useSEO'
 
 const router = useRouter()
+const { updateSEO, addStructuredData } = useSEO()
 
 const goBack = () => {
   router.push('/#projects')
@@ -11,6 +14,34 @@ const goBack = () => {
 const openLandingPage = () => {
   window.open('https://datapilot.costubot.com', '_blank')
 }
+
+onMounted(() => {
+  // Update SEO for this page
+  updateSEO({
+    title: 'Data Pilot - Platform Big Data Management & Machine Learning | Dio Saputra',
+    description: 'Data Pilot adalah platform komprehensif untuk manajemen big data yang memungkinkan pengguna mengolah data dan melakukan training model Machine Learning. Dikembangkan menggunakan Next.js, Lumen, FastAPI, dan Sklearn.',
+    keywords: 'Data Pilot, Big Data Management, Machine Learning, Next.js, Lumen, FastAPI, Sklearn, Dio Saputra, Portfolio',
+    ogType: 'article',
+    canonicalUrl: 'https://diosaputra.dev/project/data-pilot'
+  })
+  
+  // Add structured data for the project
+  addStructuredData({
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Data Pilot",
+    "description": "Platform komprehensif untuk manajemen big data yang memungkinkan pengguna mengolah data dan melakukan training model Machine Learning",
+    "applicationCategory": "WebApplication",
+    "operatingSystem": "Web",
+    "programmingLanguage": ["JavaScript", "PHP", "Python"],
+    "author": {
+      "@type": "Person",
+      "name": "Dio Saputra"
+    },
+    "dateCreated": "2024-12-01",
+    "url": "https://datapilot.costubot.com"
+  })
+})
 </script>
 
 <template>

@@ -78,28 +78,33 @@ const projects: Project[] = [
 </script>
 
 <template>
-  <section id="projects">
+  <section id="projects" itemscope itemtype="https://schema.org/ItemList">
     <div class="section-container">
       <div class="text-center mb-16">
-        <h2 class="text-4xl lg:text-5xl font-bold mb-4">
+        <h2 class="text-4xl lg:text-5xl font-bold mb-4" itemprop="name">
           <span class="text-neon">Proyek</span> Unggulan
         </h2>
-        <p class="text-dark-muted text-lg max-w-2xl mx-auto">
+        <p class="text-dark-muted text-lg max-w-2xl mx-auto" itemprop="description">
           Berikut adalah beberapa proyek terbaru saya yang menunjukkan keahlian dan passion saya dalam pengembangan
         </p>
       </div>
       
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div
-          v-for="project in projects"
+        <article
+          v-for="(project, index) in projects"
           :key="project.id"
           class="group bg-dark-card border border-dark-border rounded-xl overflow-hidden card-hover"
+          itemprop="itemListElement"
+          itemscope
+          itemtype="https://schema.org/CreativeWork"
         >
+          <meta :content="(index + 1).toString()" itemprop="position" />
           <div class="relative overflow-hidden">
             <img 
               :src="project.image" 
-              :alt="project.title"
+              :alt="`${project.title} - ${project.description}`"
               class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
+              itemprop="image"
             />
             <div class="absolute inset-0 bg-gradient-to-t from-dark-bg/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             
@@ -110,10 +115,10 @@ const projects: Project[] = [
           </div>
           
           <div class="p-6">
-            <h3 class="text-xl font-semibold mb-2 text-dark-text group-hover:text-neon transition-colors duration-300">
+            <h3 class="text-xl font-semibold mb-2 text-dark-text group-hover:text-neon transition-colors duration-300" itemprop="name">
               {{ project.title }}
             </h3>
-            <p class="text-dark-muted mb-4 leading-relaxed">
+            <p class="text-dark-muted mb-4 leading-relaxed" itemprop="description">
               {{ project.description }}
             </p>
             
@@ -177,7 +182,7 @@ const projects: Project[] = [
               </div>
             </div>
           </div>
-        </div>
+        </article>
       </div>
     </div>
   </section>

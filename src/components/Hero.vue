@@ -45,14 +45,14 @@ onMounted(() => {
 </script>
 
 <template>
-  <section class="min-h-screen flex items-center justify-center relative">
+  <section class="min-h-screen flex items-center justify-center relative" itemscope itemtype="https://schema.org/Person">
     <div class="section-container">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
         <!-- Left Content -->
         <div class="space-y-8">
           <div class="space-y-4">
             <p class="text-neon text-lg font-mono">Halo, aku</p>
-            <h1 class="text-5xl lg:text-7xl font-bold text-dark-text">
+            <h1 class="text-5xl lg:text-7xl font-bold text-dark-text" itemprop="name">
               Dio Saputra
             </h1>
             <div class="h-16 flex items-center">
@@ -64,7 +64,7 @@ onMounted(() => {
             </div>
           </div>
 
-          <p class="text-lg text-dark-muted leading-relaxed max-w-md">
+          <p class="text-lg text-dark-muted leading-relaxed max-w-md" itemprop="description">
             Mengembangkan back-end website menggunakan Laravel, Node.js, dan n8n. Saat ini saya sangat tertarik dengan
             perkembangan AI, dan memiliki visi untuk menciptakan inovasi teknologi yang bermanfaat.
           </p>

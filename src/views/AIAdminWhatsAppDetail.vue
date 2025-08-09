@@ -1,12 +1,47 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
+import { onMounted } from 'vue'
 import adminImage from '../assets/admin.png'
+import { useSEO } from '../composables/useSEO'
 
 const router = useRouter()
+const { updateSEO, addStructuredData } = useSEO()
 
 const goBack = () => {
   router.push('/#projects')
 }
+
+onMounted(() => {
+  // Update SEO for this page
+  updateSEO({
+    title: 'AI Admin WhatsApp - Bot WhatsApp Otomatis 24/7 | Dio Saputra',
+    description: 'AI Admin WhatsApp adalah bot otomatis yang beroperasi 24/7 untuk menangani pesan WhatsApp sebagai admin. Dikembangkan menggunakan n8n workflow automation dan WhatsApp Gateway untuk respons otomatis yang cerdas.',
+    keywords: 'AI Admin WhatsApp, Bot WhatsApp, n8n automation, WhatsApp Gateway, Chatbot, Automation, Dio Saputra, Portfolio',
+    ogType: 'article',
+    canonicalUrl: 'https://diosaputra.dev/project/ai-admin-whatsapp'
+  })
+  
+  // Add structured data for the project
+  addStructuredData({
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "AI Admin WhatsApp",
+    "description": "Bot otomatis yang beroperasi 24/7 untuk menangani pesan WhatsApp sebagai admin dengan kemampuan mengirim gambar",
+    "applicationCategory": "ChatBot",
+    "operatingSystem": "Web",
+    "author": {
+      "@type": "Person",
+      "name": "Dio Saputra"
+    },
+    "dateCreated": "2024-06-01",
+    "offers": {
+      "@type": "Offer",
+      "availability": "https://schema.org/InStock",
+      "price": "0",
+      "priceCurrency": "IDR"
+    }
+  })
+})
 </script>
 
 <template>

@@ -33,10 +33,10 @@ const hoveredSkill = ref<string | null>(null)
 </script>
 
 <template>
-  <section id="skills" class="bg-dark-card/30">
+  <section id="skills" class="bg-dark-card/30" itemscope itemtype="https://schema.org/ItemList">
     <div class="section-container">
       <div class="text-center mb-16">
-        <h2 class="text-4xl lg:text-5xl font-bold mb-4">
+        <h2 class="text-4xl lg:text-5xl font-bold mb-4" itemprop="name">
           <span class="text-neon">Keahlian</span> & Teknologi
         </h2>
         <p class="text-dark-muted text-lg max-w-2xl mx-auto">
@@ -46,22 +46,27 @@ const hoveredSkill = ref<string | null>(null)
       
       <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         <div
-          v-for="skill in skills"
+          v-for="(skill, index) in skills"
           :key="skill.name"
           class="group relative bg-dark-card border border-dark-border rounded-xl p-6 text-center cursor-pointer card-hover"
           @mouseenter="hoveredSkill = skill.name"
           @mouseleave="hoveredSkill = null"
+          itemprop="itemListElement"
+          itemscope
+          itemtype="https://schema.org/ListItem"
         >
+          <meta :content="(index + 1).toString()" itemprop="position" />
           <div class="w-16 h-16 mb-3 mx-auto transition-transform duration-300 group-hover:scale-110">
             <img 
               :src="skill.logo" 
-              :alt="skill.name"
+              :alt="`${skill.name} - ${skill.category} Technology`"
               class="w-full h-full object-contain"
+              itemprop="image"
             />
           </div>
           
-          <h3 class="font-semibold text-dark-text mb-1">{{ skill.name }}</h3>
-          <p class="text-sm text-dark-muted">{{ skill.category }}</p>
+          <h3 class="font-semibold text-dark-text mb-1" itemprop="name">{{ skill.name }}</h3>
+          <p class="text-sm text-dark-muted" itemprop="category">{{ skill.category }}</p>
           
           <!-- Tooltip -->
           <Transition name="tooltip">
