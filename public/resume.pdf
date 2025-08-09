@@ -1,0 +1,2 @@
+# Create a placeholder PDF file (you'll need to replace this with an actual resume)
+echo "Placeholder for resume PDF file" > /tmp/resume.txt
