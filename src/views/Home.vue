@@ -4,6 +4,7 @@ import Navigation from '../components/Navigation.vue'
 import Hero from '../components/Hero.vue'
 import Skills from '../components/Skills.vue'
 import Experience from '../components/Experience.vue'
+import Certifications from '../components/Certifications.vue'
 import Projects from '../components/Projects.vue'
 import Contact from '../components/Contact.vue'
 import ScrollToTop from '../components/ScrollToTop.vue'
@@ -38,6 +39,8 @@ onMounted(() => {
       <Skills id="skills" class="reveal" />
       
       <Experience id="experience" class="reveal" />
+      
+      <Certifications id="certifications" class="reveal" />
       
       <Projects id="projects" class="reveal" />
       

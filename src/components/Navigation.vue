@@ -8,7 +8,7 @@ const handleScroll = () => {
   isScrolled.value = window.scrollY > 50
 
   // Update active section based on scroll position
-  const sections = ['home', 'skills', 'experience', 'projects', 'contact']
+  const sections = ['home', 'skills', 'experience', 'certifications', 'projects', 'contact']
   for (const section of sections) {
     const element = document.getElementById(section)
     if (element) {
@@ -51,6 +51,7 @@ onUnmounted(() => {
             { id: 'home', label: 'Beranda' },
             { id: 'skills', label: 'Keahlian' },
             { id: 'experience', label: 'Pengalaman' },
+            { id: 'certifications', label: 'Sertifikasi' },
             { id: 'projects', label: 'Proyek' },
             { id: 'contact', label: 'Kontak' }
           ]" :key="item.id" @click="scrollToSection(item.id)" class="nav-link"
