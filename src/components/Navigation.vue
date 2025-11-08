@@ -38,7 +38,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+  <nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-400"
     :class="isScrolled ? 'bg-dark-bg/95 backdrop-blur-sm border-b border-dark-border' : 'bg-transparent'">
     <div class="section-container !py-4">
       <div class="flex items-center justify-between">

@@ -60,12 +60,20 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 body {
   background-color: var(--color-dark-bg);
   color: var(--color-dark-text);
   font-family: var(--font-family-sans);
+  overflow-x: hidden;
 }
 
 /* Custom component styles */
@@ -87,7 +95,7 @@ body {
   padding: 0.75rem 1.5rem;
   border-radius: 0.5rem;
   font-weight: 500;
-  transition: all 0.3s ease;
+  transition: all 400ms ease;
 }
 
 .btn-primary:hover {
@@ -101,7 +109,7 @@ body {
   padding: 0.75rem 1.5rem;
   border-radius: 0.5rem;
   font-weight: 500;
-  transition: all 0.3s ease;
+  transition: all 400ms ease;
 }
 
 .btn-secondary:hover {
@@ -109,19 +117,85 @@ body {
   color: var(--color-dark-bg);
 }
 
+/* Modern card hover with smooth transform */
 .card-hover {
-  transition: all 0.3s ease;
+  transition: all 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform, box-shadow;
 }
 
 .card-hover:hover {
-  transform: translateY(-0.5rem);
+  transform: translateY(-0.75rem) scale(1.02);
   box-shadow: var(--shadow-neon-lg);
+}
+
+/* Smooth hover transitions for all interactive elements */
+a, button, [role="button"] {
+  transition: all 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Enhanced link hover */
+a:hover {
+  transform: translateY(-1px);
+}
+
+/* Group hover children transitions */
+.group * {
+  transition: all 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Smooth reveal animations */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Gradient text animation */
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradientShift 8s ease infinite;
 }
 
 .nav-link {
   position: relative;
   color: var(--color-dark-muted);
-  transition: color 0.3s ease;
+  transition: color 400ms ease;
 }
 
 .nav-link:hover,
@@ -137,7 +211,7 @@ body {
   width: 0;
   height: 2px;
   background-color: var(--color-neon);
-  transition: width 0.3s ease;
+  transition: width 400ms ease;
 }
 
 .nav-link.active::after,
@@ -152,20 +226,7 @@ body {
   animation: typewriter 4s steps(40) 1s both, blink 1s infinite;
 }
 
-.parallax-shape {
-  position: absolute;
-  border-radius: 50%;
-  background: linear-gradient(45deg, rgba(100, 255, 218, 0.1), rgba(100, 255, 218, 0.05));
-  animation: float 6s ease-in-out infinite;
-}
-
-.parallax-shape:nth-child(2) {
-  animation-delay: -2s;
-}
-
-.parallax-shape:nth-child(3) {
-  animation-delay: -4s;
-}
+/* Removed - parallax-shape styles no longer needed */
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
@@ -183,4 +244,88 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #64ffda;
+}
+
+/* Responsive utilities */
+@media (max-width: 768px) {
+  .section-container {
+    padding: 3rem 1.5rem;
+  }
+
+  h1 {
+    font-size: 2.5rem !important;
+  }
+
+  h2 {
+    font-size: 2rem !important;
+  }
+}
+
+/* Glass morphism utility */
+.glass {
+  background: rgba(22, 27, 34, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Improved focus states for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--color-neon);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Line clamp utility */
+.line-clamp-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.line-clamp-3 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+/* Smooth page transitions */
+.page-transition-enter-active,
+.page-transition-leave-active {
+  transition: opacity 400ms ease, transform 400ms ease;
+}
+
+.page-transition-enter-from {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-transition-leave-to {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+/* Performance optimizations */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  transition: transform 400ms ease-out;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

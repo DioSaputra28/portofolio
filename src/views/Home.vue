@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
 import Navigation from '../components/Navigation.vue'
 import Hero from '../components/Hero.vue'
 import Skills from '../components/Skills.vue'
@@ -9,44 +8,28 @@ import Projects from '../components/Projects.vue'
 import Contact from '../components/Contact.vue'
 import ScrollToTop from '../components/ScrollToTop.vue'
 import ParallaxBackground from '../components/ParallaxBackground.vue'
-import ScrollReveal from 'scrollreveal'
-
-onMounted(() => {
-  // Initialize ScrollReveal
-  ScrollReveal().reveal('.reveal', {
-    delay: 200,
-    distance: '50px',
-    duration: 600,
-    easing: 'ease-out',
-    origin: 'bottom',
-    reset: false,
-    mobile: true
-  })
-})
 </script>
 
 <template>
   <div class="min-h-screen bg-dark-bg text-dark-text relative overflow-x-hidden">
     <ParallaxBackground />
-    
+
     <Navigation />
-    
+
     <main>
-      <Transition name="fade" appear>
-        <Hero id="home" />
-      </Transition>
-      
-      <Skills id="skills" class="reveal" />
-      
-      <Experience id="experience" class="reveal" />
-      
-      <Certifications id="certifications" class="reveal" />
-      
-      <Projects id="projects" class="reveal" />
-      
-      <Contact id="contact" class="reveal" />
+      <Hero id="home" />
+
+      <Skills id="skills" />
+
+      <Experience id="experience" />
+
+      <Certifications id="certifications" />
+
+      <Projects id="projects" />
+
+      <Contact id="contact" />
     </main>
-    
+
     <ScrollToTop />
   </div>
 </template>

@@ -28,7 +28,7 @@ onUnmounted(() => {
     <button
       v-show="isVisible"
       @click="scrollToTop"
-      class="fixed bottom-8 right-8 bg-neon text-dark-bg p-3 rounded-full shadow-neon hover:shadow-neon-lg transition-all duration-300 hover:-translate-y-1 z-40"
+      class="fixed bottom-8 right-8 bg-neon text-dark-bg p-3 rounded-full shadow-neon hover:shadow-neon-lg transition-all duration-400 hover:-translate-y-1 z-40"
       aria-label="Scroll to top"
     >
       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -41,7 +41,7 @@ onUnmounted(() => {
 <style scoped>
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.3s ease;
+  transition: opacity 400ms ease;
 }
 
 .fade-enter-from,

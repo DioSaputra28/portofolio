@@ -28,54 +28,115 @@ const socialLinks = [
 </script>
 
 <template>
-  <section id="contact" class="bg-dark-card/30">
-    <div class="section-container">
-      <div class="max-w-3xl mx-auto text-center">
-        <h2 class="text-4xl lg:text-5xl font-bold mb-8">
-          Mari <span class="text-neon">Berkolaborasi</span>
-        </h2>
-        
-        <p class="text-lg text-dark-muted mb-12 leading-relaxed">
-          Saya selalu tertarik dengan peluang baru dan proyek yang menarik. 
-          Baik Anda ingin mendiskusikan kolaborasi potensial atau hanya ingin menyapa, 
-          saya akan senang mendengar dari Anda!
-        </p>
-        
-        <div class="flex justify-center items-center space-x-8 mb-12">
-          <a
-            v-for="social in socialLinks"
-            :key="social.name"
-            :href="social.url"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="group relative p-4 bg-dark-card border border-dark-border rounded-xl hover:border-neon transition-all duration-300 hover:-translate-y-1 hover:shadow-neon"
-            :title="social.name"
-          >
-            <svg 
-              class="w-6 h-6 text-dark-muted group-hover:text-neon transition-colors duration-300" 
-              fill="currentColor" 
-              viewBox="0 0 24 24"
-            >
-              <path :d="social.icon" />
-            </svg>
-            
-            <!-- Tooltip -->
-            <div class="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-dark-bg border border-neon rounded-lg px-2 py-1 text-sm font-medium text-neon whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              {{ social.name }}
-            </div>
-          </a>
-        </div>
-        
-        <div class="space-y-4">
-          <p class="text-dark-muted">
-            Saat ini tersedia untuk pekerjaan freelance dan peluang full-time
+  <section id="contact" class="relative overflow-hidden">
+    <!-- Background decorative elements -->
+    <div class="absolute inset-0 bg-dark-bg"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40rem] h-[40rem] bg-neon/10 rounded-full blur-3xl"></div>
+
+    <div class="section-container relative z-10">
+      <div class="max-w-4xl mx-auto">
+        <!-- Header -->
+        <div class="text-center mb-16">
+          <div class="inline-block mb-4">
+            <span class="text-neon text-sm font-mono tracking-wider uppercase px-4 py-2 rounded-full bg-neon/10 border border-neon/30">
+              Hubungi
+            </span>
+          </div>
+          <h2 class="text-4xl lg:text-6xl font-bold mb-6 text-white">
+            Mari Berkolaborasi
+          </h2>
+          <p class="text-lg lg:text-xl text-dark-muted mb-8 leading-relaxed max-w-2xl mx-auto">
+            Saya selalu tertarik dengan peluang baru dan proyek yang menarik.
+            Baik Anda ingin mendiskusikan kolaborasi potensial atau hanya ingin menyapa,
+            saya akan senang mendengar dari Anda!
           </p>
-          <a 
-            href="mailto:diosaputra20201@gmail.com"
-            class="inline-block btn-primary text-lg px-8 py-4"
-          >
-            Mari Bekerja Sama
-          </a>
+        </div>
+
+        <!-- Main CTA Card -->
+        <div class="relative group mb-12">
+          <!-- Glow effect -->
+          <div class="absolute -inset-1 bg-neon rounded-3xl opacity-20 group-hover:opacity-40 blur-xl transition duration-400"></div>
+
+          <!-- Card content -->
+          <div class="relative bg-dark-card/80 backdrop-blur-xl border border-white/20 rounded-3xl p-8 lg:p-12">
+            <!-- Social Links Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-10">
+              <a
+                v-for="social in socialLinks"
+                :key="social.name"
+                :href="social.url"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group/social relative"
+                :title="social.name"
+              >
+                <!-- Hover glow -->
+                <div class="absolute -inset-0.5 bg-neon rounded-2xl opacity-0 group-hover/social:opacity-30 blur transition duration-400"></div>
+
+                <!-- Social card -->
+                <div class="relative bg-dark-bg/60 border border-white/10 rounded-2xl p-6 text-center transition-all duration-400 group-hover/social:border-neon/50 group-hover/social:-translate-y-2 group-hover/social:shadow-neon">
+                  <svg
+                    class="w-8 h-8 mx-auto mb-3 text-dark-muted group-hover/social:text-neon transition-colors duration-400"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path :d="social.icon" />
+                  </svg>
+                  <p class="text-xs font-semibold text-dark-muted group-hover/social:text-neon transition-colors">
+                    {{ social.name }}
+                  </p>
+
+                  <!-- Decorative corner -->
+                  <div class="absolute -top-1 -right-1 w-3 h-3 bg-neon rounded-full opacity-0 group-hover/social:opacity-100 group-hover/social:animate-ping transition-opacity"></div>
+                </div>
+              </a>
+            </div>
+
+            <!-- Divider -->
+            <div class="relative my-8">
+              <div class="absolute inset-0 flex items-center">
+                <div class="w-full border-t border-white/10"></div>
+              </div>
+              <div class="relative flex justify-center">
+                <span class="bg-dark-card px-4 text-sm text-dark-muted">atau</span>
+              </div>
+            </div>
+
+            <!-- CTA Section -->
+            <div class="text-center space-y-6">
+              <div class="inline-block px-6 py-3 bg-neon/10 border border-neon/30 rounded-full">
+                <p class="text-neon font-semibold flex items-center gap-2">
+                  <svg class="w-5 h-5 animate-pulse" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                  </svg>
+                  Tersedia untuk freelance & full-time
+                </p>
+              </div>
+
+              <!-- Email CTA Button -->
+              <a
+                href="mailto:diosaputra20201@gmail.com"
+                class="group/btn relative inline-block"
+              >
+                <div class="absolute -inset-1 bg-neon rounded-2xl opacity-70 group-hover/btn:opacity-100 blur transition duration-400 group-hover/btn:blur-xl"></div>
+                <div class="relative bg-neon px-10 py-5 rounded-2xl font-bold text-lg text-dark-bg transition-all duration-400 group-hover/btn:scale-105">
+                  <span class="flex items-center gap-3">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                    Mari Bekerja Sama
+                    <svg class="w-5 h-5 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </span>
+                </div>
+              </a>
+
+              <p class="text-sm text-dark-muted mt-4">
+                Response time: <span class="text-neon font-semibold">24 jam</span>
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
